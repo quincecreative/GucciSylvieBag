@@ -520,7 +520,7 @@ var createScene = function () {
     };
     setTimeout(function () {
       //for loading
-      engine.hideLoadingUI();
+      // engine.hideLoadingUI();
     }, 2000);
   });
 
@@ -600,6 +600,18 @@ var createScene = function () {
 
     fadeInFadeOutTwoPos(18500, 20100, fourthTextBabylonGucci);
   });
+
+    //END OF SCENE////////////////////////////////////////////////////////////////////////
+    scene.executeWhenReady(() => {
+      console.log("scene is ready");
+      engine.hideLoadingUI(); //hide loading screen
+      engine.runRenderLoop(() => {
+        //mobile to look nice
+        engine.setHardwareScalingLevel(1 / window.devicePixelRatio);
+        engine.adaptToDeviceRatio = true;
+        scene.render();
+      });
+    });
 
   return scene;
 };
